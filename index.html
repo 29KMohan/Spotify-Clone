@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Spotify Clone</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- =====================================================
+  LOADING SCREEN
+  ====================================================== -->
+
+    <div id="loadingScreen">
+      <h1>Spotify</h1>
+
+      <p>Loading Music...</p>
+    </div>
+
+    <!-- =====================================================
+  LOGIN SECTION
+  ====================================================== -->
+
+    <div id="loginBox" class="loginBox">
+      <div class="loginCard">
+        <h1>Spotify Login</h1>
+
+        <input type="email" id="email" placeholder="Enter Email" />
+
+        <input type="password" id="password" placeholder="Enter Password" />
+
+        <button onclick="signup()">Create Account</button>
+
+        <button onclick="loginUser()">Login</button>
+      </div>
+    </div>
+
+    <!-- =====================================================
+  APP
+  ====================================================== -->
+
+    <div id="appBox" style="display: none">
+      <!-- =====================================================
+    NAVBAR
+    ====================================================== -->
+
+      <nav class="navbar">
+        <div class="logo">
+          <img src="image/logo.png" />
+
+          <span> Spotify </span>
+        </div>
+
+        <ul>
+          <li onclick="showHome()">Home</li>
+
+          <li onclick="showAbout()">About</li>
+
+          <li>
+            <button class="logoutBtn" onclick="logout()">Logout</button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- =====================================================
+    HOME SECTION
+    ====================================================== -->
+
+      <section id="homeSection" class="mainSection">
+        <div class="container">
+          <!-- BANNER -->
+
+          <div class="welcomeBanner">
+            <h2>Welcome Back 🎵</h2>
+
+            <p>Enjoy your premium music experience</p>
+          </div>
+
+          <!-- SEARCH -->
+
+          <div class="topControls">
+            <input type="text" id="searchInput" placeholder="Search Songs..." />
+          </div>
+
+          <!-- FILTER BUTTONS -->
+
+          <div class="playlistButtons">
+            <button onclick="showPlaylist('all')">All Songs</button>
+
+            <button onclick="showPlaylist('favorites')">Favorites</button>
+
+            <button onclick="showPlaylist('recent')">Recent</button>
+
+            <button
+              id="clearRecentBtn"
+              class="clear-recent-btn"
+              onclick="clearRecent()"
+              style="display: none"
+            >
+              Clear Recent
+            </button>
+          </div>
+
+          <!-- SONGS -->
+
+          <div class="songItemContainer" id="songsBox"></div>
+        </div>
+      </section>
+
+      <!-- =====================================================
+    ABOUT SECTION
+    ====================================================== -->
+
+      <section id="aboutSection" class="mainSection" style="display: none">
+        <div class="aboutCard">
+          <h1>Spotify Clone</h1>
+
+          <p class="aboutSubtitle">
+            Premium music streaming experience with modern UI & smooth
+            interactions
+          </p>
+
+          <!-- TECH STACK -->
+
+          <div class="aboutTags">
+            <span> HTML5 </span>
+
+            <span> CSS3 </span>
+
+            <span> JavaScript </span>
+
+            <span> Firebase </span>
+          </div>
+
+          <!-- STATS -->
+
+          <div class="aboutStats">
+            <div class="statBox">
+              <h2>12+</h2>
+
+              <p>Songs</p>
+            </div>
+
+            <div class="statBox">
+              <h2>100%</h2>
+
+              <p>Responsive</p>
+            </div>
+
+            <div class="statBox">
+              <h2>Premium</h2>
+
+              <p>UI Design</p>
+            </div>
+          </div>
+
+          <!-- DEVELOPER -->
+
+          <div class="developerBox">
+            <p>Developed By</p>
+
+            <h2>Kushagra Mohan</h2>
+
+            <span> Full Stack Developer </span>
+          </div>
+        </div>
+
+        <!-- =====================================================
+      PREMIUM FOOTER
+      ====================================================== -->
+
+        <footer class="premiumFooter">
+          <h2>Spotify Clone</h2>
+
+          <p>Listen your favorite songs with premium streaming experience</p>
+
+          <!-- QUICK LINKS -->
+
+          <div class="footerLinks">
+            <a href="javascript:void(0)" onclick="showHome()">Home</a>
+
+            <a href="javascript:void(0)" onclick="showAbout()">About</a>
+
+            <a href="javascript:void(0)" onclick="showPlaylist('favorites')"
+              >Favorites</a
+            >
+
+            <a href="javascript:void(0)" onclick="showPlaylist('recent')"
+              >Recent</a
+            >
+          </div>
+          <!-- SOCIAL LINKS -->
+
+          <div class="footerLinks">
+            <a href="https://instagram.com/mohankushagra" target="_blank">
+              Instagram
+            </a>
+
+            <a
+              href="https://github.com/YOUR_USERNAME/spotify-clone"
+              target="_blank"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/kushagra-mohan-078338194"
+              target="_blank"
+            >
+              LinkedIn
+            </a>
+          </div>
+
+          <!-- INSTAGRAM QR -->
+
+          <div class="footerQR">
+            <img src="image/instagram-qr.png.jpg" alt="Instagram QR" />
+
+            <p>Scan to follow on Instagram</p>
+          </div>
+
+          <!-- COPYRIGHT -->
+
+          <div class="footerCopy">
+            © 2026 Spotify Clone • Built by
+
+            <span class="greenText"> Kushagra Mohan </span>
+          </div>
+        </footer>
+      </section>
+
+      <!-- =====================================================
+    BOTTOM PLAYER
+    ====================================================== -->
+
+      <div class="bottomPlayer">
+        <!-- PROGRESS BAR -->
+
+        <input type="range" id="myProgressBar" min="0" max="100" value="0" />
+
+        <div class="playerRow">
+          <!-- SONG INFO -->
+
+          <div class="songInfo">
+            <img src="image/playing.gif" id="musicGif" />
+
+            <div>
+              <span id="masterSongName"> No song selected </span>
+
+              <span id="songTime"> 0:00 </span>
+            </div>
+          </div>
+
+          <!-- PLAYER BUTTONS -->
+
+          <div class="playerButtons">
+            <button id="prevBtn">⏮</button>
+
+            <button id="masterPlay">▶</button>
+
+            <button id="nextBtn">⏭</button>
+          </div>
+
+          <!-- VOLUME -->
+
+          <div class="volumeBox">
+            <span id="volumeText"> 100% </span>
+
+            <input
+              type="range"
+              id="volumeControl"
+              min="0"
+              max="1"
+              step="0.1"
+              value="1"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+  JS
+  ====================================================== -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
